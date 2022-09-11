@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 } //if we are still in production, pick the data from .env file
 
 // const { config } = require('dotenv');
+const dotenv = require('dotenv');
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
