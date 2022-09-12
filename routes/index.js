@@ -25,4 +25,10 @@ router.get('/contact-us', (req, res) => {
     res.render('contact-us')
 })
 
+// @desc Contact
+// @route POST/
+router.get('/add-listing', (req, res) => {
+    res.render('add-listing')
+})
+
 module.exports = router
