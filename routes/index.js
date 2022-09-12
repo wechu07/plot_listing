@@ -4,21 +4,25 @@ const router = express.Router();
 // @desc Landing page
 // @route GET/
 router.get('/', (req, res) => {
-    res.render("main")
+    res.render('home')
 })
 
-// @desc Landing page
+// @desc Categories
 // @route GET/
-// router.get('/', (req, res) => {
-//     res.send('plot listing')
-// })
+router.get('/category', (req, res) => {
+    res.render('category')
+})
 
-// router.get('/contact-us', (req, res) => {
-//     res.render('contact-us')
-// })
+// @desc Listings
+// @route GET/
+router.get('/listing', (req, res) => {
+    res.render('listing')
+})
 
-// router.get('/category', (req, res) => {
-//     res.render('category');
-// })
+// @desc Contact
+// @route GET/
+router.get('/contact-us', (req, res) => {
+    res.render('contact-us')
+})
 
 module.exports = router
