@@ -22,13 +22,13 @@
 2. Install node, using the [Node Version Manager](https://github.com/nvm-sh/nvm "Official Node Version Manager Github page").
 3. Clone from GitHub
 ```
-git clone git@github.com:wechu07/Yelpcamp.git
-cd YelpCamp
+git@github.com:wechu07/plot_listing.git
+cd plot_listing
 ```
 
 I am using SSH based authentication. The alternative for token-based authentication is:
 ```
-https://github.com/wechu07/Yelpcamp.git
+https://github.com/wechu07/plot_listing.git
 ```
 4. Install the dependencies using ```npm install```
 5. Create a config/config.env file and configure your Mongo URI either from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) or local MongoDB
