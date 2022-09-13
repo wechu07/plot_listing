@@ -24,14 +24,13 @@
 ```
 git clone git@github.com:wechu07/Yelpcamp.git
 cd YelpCamp
-npm install
 ```
 
 I am using SSH based authentication. The alternative for token-based authentication is:
 ```
 https://github.com/wechu07/Yelpcamp.git
 ```
-4. Install the dependencies using ```npm i```
-5. Create a config.env file and configure your Mongo URI either from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) or local MongoDB
+4. Install the dependencies using ```npm install```
+5. Create a config/config.env file and configure your Mongo URI either from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) or local MongoDB
 6. To run the app in development mode, use ```npm run dev```
 7. Then go to [localhost:3000](http://localhost:3000/)
