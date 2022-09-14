@@ -5,8 +5,7 @@ const ListingSchema = new Schema({
     category: String,
     title: String,
     price: String,
-    contact: String,
-    by: String,
+    contact: String
 });
 
 module.exports = mongoose.model('Listing', ListingSchema);
