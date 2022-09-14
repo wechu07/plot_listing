@@ -4,8 +4,12 @@ const Schema = mongoose.Schema;
 const ListingSchema = new Schema({
     email: String,
     phoneNumber: String,
-    category: [String],
-    price: [String],
+    category: {
+        type: String,
+        default: 'apartments',
+        enum: ['cars', 'apartments', 'shopping', 'food', 'traveling'],
+    },
+    price: String,
     title: String
 });
 
