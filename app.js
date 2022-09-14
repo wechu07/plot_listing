@@ -5,7 +5,7 @@ const connectDB = require('./config/db')
 const morgan = require('morgan')
 const { engine } = require('express-handlebars')
 const methodOverride = require('method-override')
-const Listing = require('./models/listings')
+const Listing = require('./models/Listing')
 
 // loading the config files
 dotenv.config({ path: './config/config.env' })
@@ -31,6 +31,7 @@ app.set("views", path.resolve(__dirname, "./views"));
 
 // routes
 app.use('/', require('./routes/index'))
+app.use('/', require('./routes/listing'))
 
 const port = process.env.PORT || 3000;
 
