@@ -13,12 +13,6 @@ router.get('/category', (req, res) => {
     res.render('category')
 })
 
-// @desc Listings
-// @route GET/
-router.get('/listing', (req, res) => {
-    res.render('listing')
-})
-
 // @desc Contact
 // @route GET/
 router.get('/contact-us', (req, res) => {
@@ -27,8 +21,8 @@ router.get('/contact-us', (req, res) => {
 
 // @desc Contact
 // @route POST/
-router.get('/add-listing', (req, res) => {
-    res.render('add-listing')
-})
+// router.get('/add-listing', (req, res) => {
+//     res.render('add-listing')
+// })
 
 module.exports = router
