@@ -1251,6 +1251,16 @@ form#contact ul li:last-child {
   margin-right: 0px;
 }
 
+form#contact input[type=checkbox] {
+  display: inline-block;
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: 1px solid #8d99af;
+  outline: none;
+  cursor: pointer;
+}
 form#contact #chooseCategory {
   display: inline-block;
   color: #8d99af;
