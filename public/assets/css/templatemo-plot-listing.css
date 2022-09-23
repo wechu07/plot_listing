@@ -1418,6 +1418,10 @@ Page Heading, error 500 page
   transition: all .3s;
 }
 
+.page-heading .top-text a {
+  color: #fff;
+}
+
 
 
 /*
