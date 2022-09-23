@@ -1380,6 +1380,46 @@ Page Heading
 
 
 
+/* 
+---------------------------------------------
+Page Heading, error 500 page
+--------------------------------------------- 
+*/
+
+.page-heading .top-text h1 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.page-heading .top-text p {
+  color: #fff;
+  line-height: 70px;
+  font-size: 45px;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin-top: 15px;
+}
+
+.page-heading .top-text button {
+  margin-bottom: -15px;
+  display: inline-block;
+  background-color: #8d99af;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 7px;
+  letter-spacing: 0.25px;
+  border: none;
+  outline: none;
+  transition: all .3s;
+}
+
+
+
 /*
 ---------------------------------------
 Category Post
