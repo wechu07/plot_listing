@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer')
+// const { storage } = require('../cloudinary');
+const upload = multer({ dest: 'uploads/' })
 
 const Listing = require('../models/Listing')
 
@@ -17,15 +20,29 @@ router.get('/add-listing', (req, res) => {
 
 // @desc Add Listing
 // @route POST /add-listing 
-router.post('/add-listing', async (req, res) => {
+// router.route('/')
+//     .post(upload.single('image'), async (req, res) => {
+//     try {
+//         let data = req.body
+//         let image = req.file
+//         await Listing.create(data, image)
+//         res.redirect('/')
+//     } catch (err) {
+//         console.error(err)
+//         console.log(err)
+//         res.render('error/500')
+//     }
+// })
+
+router.post(upload.single('image'), async (req, res) => {
     try {
-        let data = req.body
-        await Listing.create(data)
-        res.redirect('/')
+      res.send(req.body, req.file)
+      res.redirect('/')
     } catch (err) {
-        console.error(err)
-        res.render('error/500')
+      console.error(err)
+      res.render('error/404')
     }
-})
+  })
+  
 
 module.exports = router
