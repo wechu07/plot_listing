@@ -9,13 +9,13 @@ const Listing = require('../models/Listing')
 // @desc Listings page
 // @route GET /listings/listing
 router.get('/listing', (req, res) => {
-    res.render('listings/listing')
+    res.render('/listing')
 })
 
 // @desc Show Add Listing Page
 // @route GET /add-listing
 router.get('/add-listing', (req, res) => {
-    res.render('listings/add-listing')
+    res.render('/add-listing')
 })
 
 // @desc Add Listing
@@ -34,9 +34,9 @@ router.get('/add-listing', (req, res) => {
 //     }
 // })
 
-router.post(upload.single('image'), async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-      res.send(req.body, req.file)
+      res.send(req.body)
       res.redirect('/')
     } catch (err) {
       console.error(err)

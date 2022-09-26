@@ -19,4 +19,10 @@ router.get('/contact-us', (req, res) => {
     res.render('contact-us')
 })
 
+// @desc Login
+// @route GET/
+router.get('/login', (req, res) => {
+    res.render('login')
+})
+
 module.exports = router
