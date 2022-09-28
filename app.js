@@ -1,5 +1,6 @@
 const dotenv = require('dotenv')
 const express = require('express')
+const mongoose = require('mongoose')
 const path = require('path')
 const connectDB = require('./config/db')
 const morgan = require('morgan')
@@ -7,6 +8,7 @@ const { engine } = require('express-handlebars')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const Listing = require('./models/Listing')
 const makeMiddleware = require('multer/lib/make-middleware')
 
@@ -31,15 +33,16 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebars
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars");
+app.engine("handlebars", engine())
+app.set("view engine", "handlebars")
 app.set("views", path.resolve(__dirname, "./views"))
 
 // express session middleware
 app.use(session({
     secret: 'thisshouldbeasecret',
     resave: false, // do not save session if nothing is changed
-    saveUninitialized: false // do not create a session until something is stored
+    saveUninitialized: false, // do not create a session until something is stored
+    store: MongoStore.create({mongoUrl: process.env.DB_URL})
 }))
 
 // passport Middleware
@@ -51,12 +54,12 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/listings', require('./routes/listings'))
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
-// app.use(methodOverride('_method'));
+// app.use(methodOverride('_method'))
 
 // loading static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
 
 // app.use((err, req, res, next) => {
 //     const { statusCode = 500 } = err;
@@ -68,5 +71,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 // server running in either
 // production or development mode
 app.listen(port, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on http://localhost:${port}`);
-});
+    console.log(`Server running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
+})
