@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const multer = require('multer')
 // const { storage } = require('../cloudinary');
 const upload = multer({ dest: 'uploads/' })
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const Listing = require('../models/Listing')
 
@@ -34,15 +35,15 @@ router.get('/add-listing', (req, res) => {
 //     }
 // })
 
-router.post('/', async (req, res) => {
-    try {
-      res.send(req.body)
-      res.redirect('/')
-    } catch (err) {
-      console.error(err)
-      res.render('error/404')
-    }
-  })
+// router.post('/', async (req, res) => {
+//     try {
+//       res.send(req.body)
+//       res.redirect('/')
+//     } catch (err) {
+//       console.error(err)
+//       res.render('error/404')
+//     }
+//   })
   
 
 module.exports = router
