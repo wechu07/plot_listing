@@ -32,5 +32,12 @@ https://github.com/wechu07/plot_listing.git
 ```
 4. Install the dependencies using ```npm install```
 5. Create a config/config.env file and configure your Mongo URI either from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) or local MongoDB
-6. To run the app in development mode, use ```npm run dev```
+6. To run the app
+```
+# Run in development
+npm run dev
+
+# Run in production
+npm start
+```
 7. Then go to [localhost:3000](http://localhost:3000/)
