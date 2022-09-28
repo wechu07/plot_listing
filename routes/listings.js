@@ -8,8 +8,8 @@ const Listing = require('../models/Listing')
 
 // @desc Listings page
 // @route GET /listings/listing
-router.get('/listing', (req, res) => {
-    res.render('/listing')
+router.get('/', (req, res) => {
+    res.render('/listings')
 })
 
 // @desc Show Add Listing Page
