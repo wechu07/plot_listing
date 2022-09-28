@@ -49,7 +49,7 @@ app.use(passport.session())
 // routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
-app.use('/listings', require('./routes/listing'))
+app.use('/listings', require('./routes/listings'))
 
 const port = process.env.PORT || 3000;
 

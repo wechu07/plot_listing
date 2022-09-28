@@ -9,13 +9,13 @@ const Listing = require('../models/Listing')
 // @desc Listings page
 // @route GET /listings/listing
 router.get('/', (req, res) => {
-    res.render('/listings')
+    res.render('listings/listings')
 })
 
 // @desc Show Add Listing Page
 // @route GET /add-listing
 router.get('/add-listing', (req, res) => {
-    res.render('/add-listing')
+    res.render('listings/add-listing')
 })
 
 // @desc Add Listing
