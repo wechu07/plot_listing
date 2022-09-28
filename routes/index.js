@@ -1,5 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 // @desc Landing page
 // @route GET/
@@ -24,5 +25,13 @@ router.get('/contact-us', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login')
 })
+
+// @desc Show Add Listing Page
+// @route GET /add-listing
+// not supposed to be here though
+router.get('/add-listing', ensureAuth, (req, res) => {
+    res.render('listings/add-listing')
+})
+
 
 module.exports = router
