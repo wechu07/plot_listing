@@ -1,37 +1,31 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth, ensureGuest } = require("../middleware/auth")
+const passport = require('passport')
 
 // @desc Landing page
 // @route GET/
-router.get('/', (req, res) => {
-    res.render('home')
+router.get("/", (req, res) => {
+  res.render("home")
 })
 
 // @desc Categories
 // @route GET/
-router.get('/category', (req, res) => {
-    res.render('category')
+router.get("/category", (req, res) => {
+  res.render("category")
 })
 
 // @desc Contact
 // @route GET/
-router.get('/contact-us', (req, res) => {
-    res.render('contact-us')
-})
-
-// @desc Login
-// @route GET/
-router.get('/login', (req, res) => {
-    res.render('login')
+router.get("/contact-us", (req, res) => {
+  res.render("contact-us")
 })
 
 // @desc Show Add Listing Page
 // @route GET /add-listing
 // not supposed to be here though
-router.get('/add-listing', ensureAuth, (req, res) => {
-    res.render('listings/add-listing')
-})
-
+router.get("/add-listing", ensureAuth, (req, res) => {
+  res.render("listings/add-listing")
+});
 
 module.exports = router
