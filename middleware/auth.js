@@ -1,9 +1,9 @@
 module.exports = {
     ensureAuth: function(req, res, next) {
-        if (req.isAuthenticated()) { // f logged in
+        if (req.isAuthenticated()) { // if logged in
             return next() // continue
         } else {
-            res.redirect('/') // otherwise redirect them home page
+            res.redirect('/login') // otherwise redirect them to login page
         }
     },
     ensureGuest: function(req, res, next) {
