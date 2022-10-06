@@ -1,5 +1,6 @@
 const dotenv = require('dotenv')
 const express = require('express')
+const router = express.Router()
 const mongoose = require('mongoose')
 const path = require('path')
 const connectDB = require('./config/db')
@@ -8,9 +9,12 @@ const { engine } = require('express-handlebars')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
+const flash = require('connect-flash')
+const indexRoutes = require('./routes/index')
 const MongoStore = require('connect-mongo')
 const Listing = require('./models/Listing')
 const makeMiddleware = require('multer/lib/make-middleware')
+const { ensureAuth, ensureGuest } = require("./middleware/auth")
 
 // loading the config files
 dotenv.config({ path: './config/config.env' })
@@ -37,36 +41,46 @@ app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
 app.set("views", path.resolve(__dirname, "./views"))
 
+// loading static files
+app.use(express.static(path.join(__dirname, 'public')))
+
+// middleware to override the req.method property with a new value
+app.use(methodOverride('_method'))
+
 // express session middleware
-app.use(session({
+// setting session expiry
+const sessionConfig = {
     secret: 'thisshouldbeasecret',
     resave: false, // do not save session if nothing is changed
-    saveUninitialized: false, // do not create a session until something is stored
-    store: MongoStore.create({mongoUrl: process.env.DB_URL})
-}))
+    saveUninitialized: false, // do not create a session until something ... 
+    // is stored (new but unmodified)
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL })
+}
+
+app.use(session(sessionConfig))
+app.use(flash())
 
 // passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
+// app.use((req, res, next) => {
+//     res.locals.currentUser = req.user
+//     res.locals.success = req.flash('success')
+//     res.locals.error = req.flash('error')
+//     next()
+// })
+
 // routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
-app.use('/listings', require('./routes/listings'))
+app.use('/', indexRoutes) // index routes
 
 const port = process.env.PORT || 3000
 
-// app.use(methodOverride('_method'))
-
-// loading static files
-app.use(express.static(path.join(__dirname, 'public')))
-
-// app.use((err, req, res, next) => {
-//     const { statusCode = 500 } = err;
-//     if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-//     res.status(statusCode).render('error', { err })
-// })
-
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+    res.status(statusCode).render('error', { err })
+})
 
 // server running in either
 // production or development mode
