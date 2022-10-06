@@ -65,15 +65,15 @@ router.get(
 
 // @desc LogIN user
 // @route POST /auth/logout
-router.post(
-  "/login",
-  // ensureGuest,
-  passport.authenticate("google", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
-)
+// router.post(
+//   "/login",
+//   // ensureGuest,
+//   passport.authenticate("google", {
+//     successRedirect: "/",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })
+// )
 
 // @desc Logout user
 // @route  /auth/logout
