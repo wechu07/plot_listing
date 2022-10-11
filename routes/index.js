@@ -11,7 +11,7 @@ const Listing = require('../models/Listing')
 // @desc Landing page
 // @route GET/
 router.get("/", (req, res) => {
-  res.render("home")
+  res.render("home", {loggedIn: req.session.loggedIn})
 })
 
 // @desc Categories
@@ -39,30 +39,6 @@ router.get("/login",  (req, res) => {
   })
 })
 
-// @desc Auth with Google
-// @route GET /auth/google
-// using the google strategy we have created
-// passport.js, we obtain the scope of what
-// is contained in the profile
-router.get(
-  "/google",
-  // ensureGuest,
-  passport.authenticate("google", { scope: ["profile"] })
-)
-
-// @desc Google auth callback
-// @route GET /auth/google/callback
-// callback if it fails,
-// redirect to home page if it passes
-router.get(
-  "/google/callback",
-  // ensureGuest,
-  passport.authenticate("google", { failureRedirect: "/" }),
-  (req, res) => {
-    res.redirect("/")
-  }
-)
-
 // @desc LogIN user
 // @route POST /auth/logout
 // router.post(
@@ -77,7 +53,7 @@ router.get(
 
 // @desc Logout user
 // @route  /auth/logout
-router.delete("auth/logout", (req, res) => {
+router.delete("auth/logout", ensureAuth, (req, res) => {
   req.logOut()
   res.redirect("/")
 })
@@ -94,8 +70,8 @@ router.get('/listings', (req, res) => {
 // @desc Show Add Listing Page
 // @route GET /add-listing
 // not supposed to be here though
-router.get('/add-listing',  (req, res) => {
-  res.render('listings/add-listing')
+router.get('/add-listing', ensureAuth, (req, res) => {
+  res.render('listings/add-listing', {loggedIn: true })
 })
 
 // @desc Add Listing
