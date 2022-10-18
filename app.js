@@ -13,6 +13,7 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const indexRoutes = require('./routes/index')
 const authRoutes = require('./routes/auth')
+const listingRoutes = require('./routes/listing')
 const MongoStore = require('connect-mongo')
 const Listing = require('./models/Listing')
 const makeMiddleware = require('multer/lib/make-middleware')
@@ -50,7 +51,7 @@ const hbs = create({
 // Handlebars
 app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
-app.set("views", path.resolve(__dirname, "./views"))
+app.set("views", path.resolve(__dirname, "views"))
 
 // loading static files
 app.use(express.static(path.join(__dirname, 'public')))
@@ -85,6 +86,8 @@ app.use((req, res, next) => {
 // routes
 app.use('/', indexRoutes) // index routes
 app.use('/auth', authRoutes) // index routes
+app.use('/listing', authRoutes) // listing routes
+
 
 const port = process.env.PORT || 3000
 
