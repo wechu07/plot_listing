@@ -69,13 +69,17 @@ const sessionConfig = {
     store: MongoStore.create({ mongoUrl: process.env.DB_URL })
 }
 
+// Session configureation
 app.use(session(sessionConfig))
+
+// Flash messages 
 app.use(flash())
 
 // passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
+//flash middleware
 app.use((req, res, next) => {
     res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
