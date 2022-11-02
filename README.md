@@ -36,8 +36,7 @@ https://github.com/wechu07/plot_listing.git
 ```
 # Run in development
 npm run dev
-
-# Run in production
-npm start
 ```
 7. Then go to [localhost:3000](http://localhost:3000/)
+8. Bugs
+    - Numerous express-handlebars errors I wish to solve by replacing with React.
