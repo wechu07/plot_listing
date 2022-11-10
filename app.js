@@ -78,6 +78,10 @@ app.use(flash())
 // passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
+passport.use(new GoogleStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 //flash middleware
 app.use((req, res, next) => {
